@@ -19,9 +19,10 @@ h1 {
 }
 
 .container {
+margin-left: 550px;
   display: flex;                /* set our display property to use flex-box */
-  align-items: center;          /* center content vertically */
   justify-content: center;      /* center container horizontally */
+  align-items: center;          /* center content vertically */
 }
 
 .column {
@@ -30,20 +31,27 @@ h1 {
   flex-direction: column;       /* align children in columns instead of rows */
 }
 
-.square {
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  font-size: 96px;
-  height: 50px;
-  line-height: 5px;
-  user-select: none;
-  width: 50px;
- background-color: aquamarine;
-}
-
 .wrap {
   flex-wrap: wrap;              /* tells container to drop down once it reaches max-width */
   height: 456px;
   width: 456px;
+}
+
+.square {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  font-size: 20px;
+  height: 55px;
+  line-height: 5px;
+  user-select: none;
+  width: 55px;
+}
+
+#a1 {
+  background-color: white;
+}
+
+#a2 {
+  background-color: black;
 }
 
 .square:hover {
