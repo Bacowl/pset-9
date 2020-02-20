@@ -39,7 +39,7 @@ h1 {
 
 .square {
   border: 1px solid rgba(0, 0, 0, 0.75);
-  font-size: 20px;
+  font-size: 100px;
   height: 55px;
   line-height: 50px;
   user-select: none;
