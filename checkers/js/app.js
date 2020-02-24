@@ -1,7 +1,6 @@
 
 const squares = Array.from(document.querySelectorAll("#board div"));
 
-const blackCheckers = [];
 const redCheckers = [];
 
 window.onload= function() {
@@ -40,6 +39,20 @@ window.onload= function() {
     board[45] = "\u2022"
     board[43] = "\u2022"
     board[41] = "\u2022"
+
+    redCheckers[redCheckers.length] = document.getElementById("42")
+    redCheckers[redCheckers.length] = document.getElementById("44")
+    redCheckers[redCheckers.length] = document.getElementById("46")
+    redCheckers[redCheckers.length] = document.getElementById("48")
+    redCheckers[redCheckers.length] = document.getElementById("49")
+    redCheckers[redCheckers.length] = document.getElementById("51")
+    redCheckers[redCheckers.length] = document.getElementById("53")
+    redCheckers[redCheckers.length] = document.getElementById("54")
+    redCheckers[redCheckers.length] = document.getElementById("57")
+    redCheckers[redCheckers.length] = document.getElementById("59")
+    redCheckers[redCheckers.length] = document.getElementById("61")
+    redCheckers[redCheckers.length] = document.getElementById("63")
+
     win = null;
     render();
 }
@@ -48,4 +61,7 @@ window.onload= function() {
     board.forEach(function(mark, index) {
       squares[index].textContent = mark;    // writes an X or an O on board
     });
+    for (var i = 0; i < redCheckers.length; i++) {
+      redCheckers[redCheckers[i].id].style.color = "red"
+    }
   }
