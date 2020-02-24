@@ -15,64 +15,37 @@ window.onload= function() {
   "", "", "", "", "", "", "", "",
   "", "", "", "", "", "", "", "",
   ];
-    square1 = document.getElementById("1")
-    document.getElementById("3") = square2
-    document.getElementById("5") = square3
-    document.getElementById("7") = square4
-    document.getElementById("10") = square5
-    document.getElementById("12") = square6
-    document.getElementById("14") = square7
-    document.getElementById("16") = square8
-    document.getElementById("17") = square9
-    document.getElementById("19") = square10
-    document.getElementById("21") = square11
-    document.getElementById("23") = square12
+    board[0] = "\u2022"
+    board[2] = "\u2022"
+    board[4] = "\u2022"
+    board[6] = "\u2022"
+    board[9] = "\u2022"
+    board[11] = "\u2022"
+    board[13] = "\u2022"
+    board[15] = "\u2022"
+    board[16] = "\u2022"
+    board[18] = "\u2022"
+    board[20] = "\u2022"
+    board[22] = "\u2022"
 
-    document.getElementById("64") = square13
-    document.getElementById("62") = square14
-    document.getElementById("55") = square15
-    document.getElementById("53") = square16
-    document.getElementById("51") = square17
-    document.getElementById("49") = square18
-    document.getElementById("48") = square19
-    document.getElementById("46") = square20
-    document.getElementById("44") = square21
-    document.getElementById("42") = square22
-    document.getElementById("60") = square23
-    document.getElementById("58") = square24
-
-    square1 = blackCheckers[blackCheckers.length]
-    square2 = blackCheckers[blackCheckers.length]
-    square3 = blackCheckers[blackCheckers.length]
-    square4 = blackCheckers[blackCheckers.length]
-    square5 = blackCheckers[blackCheckers.length]
-    square6 = blackCheckers[blackCheckers.length]
-    square7 = blackCheckers[blackCheckers.length]
-    square8 = blackCheckers[blackCheckers.length]
-    square9 = blackCheckers[blackCheckers.length]
-    square10 = blackCheckers[blackCheckers.length]
-    square11 = blackCheckers[blackCheckers.length]
-    square12 = blackCheckers[blackCheckers.length]
-
-    square13 = redCheckers[redCheckers.length]
-    square14 = redCheckers[redCheckers.length]
-    square15 = redCheckers[redCheckers.length]
-    square16 = redCheckers[redCheckers.length]
-    square17 = redCheckers[redCheckers.length]
-    square18 = redCheckers[redCheckers.length]
-    square19 = redCheckers[redCheckers.length]
-    square20 = redCheckers[redCheckers.length]
-    square21 = redCheckers[redCheckers.length]
-    square22 = redCheckers[redCheckers.length]
-    square23 = redCheckers[redCheckers.length]
-    square24 = redCheckers[redCheckers.length]
-
+    board[63] = "\u2022"
+    board[61] = "\u2022"
+    board[59] = "\u2022"
+    board[57] = "\u2022"
+    board[54] = "\u2022"
+    board[52] = "\u2022"
+    board[50] = "\u2022"
+    board[48] = "\u2022"
+    board[47] = "\u2022"
+    board[45] = "\u2022"
+    board[43] = "\u2022"
+    board[41] = "\u2022"
     win = null;
     render();
 }
 
   function render() {
-    blackCheckers.forEach(function(mark, index) {
+    board.forEach(function(mark, index) {
       squares[index].textContent = mark;    // writes an X or an O on board
     });
   }
