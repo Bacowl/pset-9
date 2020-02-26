@@ -77,7 +77,11 @@ window.onload= function() {
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      if ((board[index] == "\u2022" || board[index] == "♔")) {
-
+      if ((board[index] == "\u2022" || board[index] == "♔") && turn.toLowerCase == squares[index].style.color) {
+        alert("great job m8")
+      } else {
+        console.log(turn.toLowerCase())
+        console.log(squares[index].style.color)
+        console.log(board[index])
       }
     }
