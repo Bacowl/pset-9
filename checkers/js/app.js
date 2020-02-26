@@ -77,7 +77,7 @@ window.onload= function() {
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      if (board[index] == "\u2022" || board[index] == "♔") {
+      if ((board[index] == "\u2022" || board[index] == "♔")) {
 
       }
     }
