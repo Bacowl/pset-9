@@ -1,5 +1,6 @@
 
 const squares = Array.from(document.querySelectorAll("#board div"));
+document.getElementById("board").onclick = takeTurn;
 
 const redCheckers = [];
 
@@ -14,7 +15,7 @@ window.onload= function() {
   "", "", "", "", "", "", "", "",
   "", "", "", "", "", "", "", "",
   ];
-    board[0] = "\u2022"
+    board[0] = "\u2654"
     board[2] = "\u2022"
     board[4] = "\u2022"
     board[6] = "\u2022"
@@ -63,6 +64,19 @@ window.onload= function() {
     });
     for (var i = 0; i < redCheckers.length ; i++) {
       squares[redCheckers[i].id-1].style.color = "red"
-      console.log(redCheckers[i].id)
+    }
+    for (var i = 0; i < board.length; i++) {
+      if (squares[i].textContent == "♔") {
+        squares[i].style.fontSize = "50px"
+      }
     }
   }
+
+  function takeTurn(e) {
+      let index = squares.findIndex(function(square) {
+        return square === e.target;
+      });
+      if (board[index] == "\u2022" || board[index] == "\u2022") {
+
+      }
+    }
