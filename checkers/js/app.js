@@ -15,7 +15,7 @@ window.onload= function() {
   "", "", "", "", "", "", "", "",
   "", "", "", "", "", "", "", "",
   ];
-    board[0] = "\u2654"
+    board[0] = "\u2022"
     board[2] = "\u2022"
     board[4] = "\u2022"
     board[6] = "\u2022"
@@ -73,10 +73,11 @@ window.onload= function() {
   }
 
   function takeTurn(e) {
+    turn = document.getElementById("message").textContent.substring(6,document.getElementById("message").textContent.length)
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      if (board[index] == "\u2022" || board[index] == "\u2022") {
+      if (board[index] == "\u2022" || board[index] == "♔") {
 
       }
     }
