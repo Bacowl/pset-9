@@ -79,11 +79,12 @@ window.onload= function() {
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
+      console.log(index)
       var playedCorrect = false;
         if ((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) {
           if (step == 1) {
-            if (turn.toLowerCase() == "red") {
-
+            if (turn.toLowerCase() == "red" && (board[index + 9] == board[indexReference] || board[index + 7] == board[indexReference]) && index ) {
+              step = -1
             }
           }
           var indexReference = index
