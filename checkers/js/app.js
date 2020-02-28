@@ -3,7 +3,7 @@ const squares = Array.from(document.querySelectorAll("#board div"));
 document.getElementById("board").onclick = takeTurn;
 
 const redCheckers = [];
-
+var step = 0;
 window.onload= function() {
   board = [
   "", "", "", "", "", "", "", "",
@@ -62,26 +62,38 @@ window.onload= function() {
     board.forEach(function(mark, index) {
       squares[index].textContent = mark;    // writes an X or an O on board
     });
-    for (var i = 0; i < redCheckers.length ; i++) {
-      squares[redCheckers[i].id-1].style.color = "red"
+    for (var i = 0; i < board.length; i++) {
+      squares[i].style.color = "black"
     }
     for (var i = 0; i < board.length; i++) {
       if (squares[i].textContent == "♔") {
         squares[i].style.fontSize = "50px"
       }
     }
+    for (var i = 0; i < redCheckers.length ; i++) {
+      squares[redCheckers[i].id-1].style.color = "red"
+    }
   }
-
   function takeTurn(e) {
     turn = document.getElementById("message").textContent.substring(6,document.getElementById("message").textContent.length)
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      if ((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) {
-        alert("great job m8")
-      } else {
-        console.log(turn.toLowerCase())
-        console.log(squares[index].style.color)
-        console.log(board[index])
-      }
+      var playedCorrect = false;
+        if ((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) {
+          if (step == 1) {
+            if (turn.toLowerCase() == "red") {
+
+            }
+          }
+          var indexReference = index
+          step++
+          playedCorrect = true;
+          if (turn.toLowerCase() == "red" && board[index] == "•" && step == 2) {
+            document.getElementById("message").textContent = "Turn: Black"
+          } else if (turn.toLowerCase() == "black" && step == 2) {
+            document.getElementById("message").textContent = "Turn: Red"
+          }
+        }
+
     }
