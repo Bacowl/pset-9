@@ -4,6 +4,7 @@ document.getElementById("board").onclick = takeTurn;
 
 const redCheckers = [];
 var step = 0;
+var indexReference;
 window.onload= function() {
   board = [
   "", "", "", "", "", "", "", "",
@@ -79,21 +80,40 @@ window.onload= function() {
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      console.log(index)
       var playedCorrect = false;
-        if ((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) {
+        if (((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) || step == 1) {
+          console.log(step)
+          console.log(indexReference)
           if (step == 1) {
-            if (turn.toLowerCase() == "red" && (board[index + 9] == board[indexReference] || board[index + 7] == board[indexReference]) && index ) {
-              step = -1
+            console.log(turn.toLowerCase())
+            console.log(index - (index%8) +8)
+            console.log(indexReference - indexReference%8)
+            if (turn.toLowerCase() == "red" && (board[index + 9] == board[indexReference] || index + 7 == indexReference) && index - index%8 +8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
+              console.log("got here part 2")
+              board[indexReference] == ""
+              board[index] == "•"
+              for (var i = 0; i < redCheckers.length; i++) {
+                if (redCheckers[i] == document.getElementById(indexReference + 1)) {
+                  redCheckers.splice(i,1,document.getElementById(index + 1))
+                }
+              }
             }
           }
-          var indexReference = index
-          step++
-          playedCorrect = true;
+          indexReference = index
+
+          if (step == 0) {
+            step = 1
+          } else if (step == 1) {
+            step = 2
+          }
           if (turn.toLowerCase() == "red" && board[index] == "•" && step == 2) {
             document.getElementById("message").textContent = "Turn: Black"
+            step == 0;
+            render()
           } else if (turn.toLowerCase() == "black" && step == 2) {
             document.getElementById("message").textContent = "Turn: Red"
+            step == 0;
+            render()
           }
         }
 
