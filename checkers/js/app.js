@@ -61,7 +61,7 @@ window.onload= function() {
 
   function render() {
     board.forEach(function(mark, index) {
-      squares[index].textContent = mark;    // writes an X or an O on board
+      squares[index].textContent = mark;
     });
     for (var i = 0; i < board.length; i++) {
       squares[i].style.color = "black"
@@ -82,21 +82,22 @@ window.onload= function() {
       });
       var playedCorrect = false;
         if (((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) || step == 1) {
-          console.log(step)
-          console.log(indexReference)
           if (step == 1) {
-            console.log(turn.toLowerCase())
-            console.log(index - (index%8) +8)
-            console.log(indexReference - indexReference%8)
-            if (turn.toLowerCase() == "red" && (board[index + 9] == board[indexReference] || index + 7 == indexReference) && index - index%8 +8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
-              console.log("got here part 2")
-              board[indexReference] == ""
-              board[index] == "•"
+            if (turn.toLowerCase() == "red" && (index + 9 == indexReference || index + 7 == indexReference) && index - index%8 +8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
+              console.log(indexReference)
+              console.log(index)
+              board[indexReference] = ""
+              board[index] = "•"
               for (var i = 0; i < redCheckers.length; i++) {
                 if (redCheckers[i] == document.getElementById(indexReference + 1)) {
                   redCheckers.splice(i,1,document.getElementById(index + 1))
                 }
               }
+            } else if (turn.toLowerCase() == "black" && (index - 9 == indexReference || index - 7 == indexReference) && index - index%8 - 8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
+              board[indexReference] = ""
+              board[index] = "•"
+            } else {
+              step = -1
             }
           }
           indexReference = index
@@ -105,14 +106,16 @@ window.onload= function() {
             step = 1
           } else if (step == 1) {
             step = 2
+          } else if (step == -1) {
+            step = 0
           }
           if (turn.toLowerCase() == "red" && board[index] == "•" && step == 2) {
             document.getElementById("message").textContent = "Turn: Black"
-            step == 0;
+            step = 0;
             render()
           } else if (turn.toLowerCase() == "black" && step == 2) {
             document.getElementById("message").textContent = "Turn: Red"
-            step == 0;
+            step = 0;
             render()
           }
         }
