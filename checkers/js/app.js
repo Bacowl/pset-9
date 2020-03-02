@@ -80,7 +80,6 @@ window.onload= function() {
       let index = squares.findIndex(function(square) {
         return square === e.target;
       });
-      var playedCorrect = false;
         if (((board[index] == "•" || board[index] == "♔") && turn.toLowerCase() == squares[index].style.color) || step == 1) {
           if (step == 1) {
             if (turn.toLowerCase() == "red" && (index + 9 == indexReference || index + 7 == indexReference) && index - index%8 +8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
