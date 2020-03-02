@@ -1,0 +1,107 @@
+* {
+  margin: 10px;
+  padding: 0;
+}
+
+#heading {
+    color: blue;
+    font-size: 40px;
+    text-align: center;
+}
+
+#linkage:hover{
+  border: 10px solid orange;
+}
+
+#navigation {
+  margin: -20px;
+  background: darkgrey;
+  border: 15px solid grey;
+  border-top: 20px solid lightgrey;
+  border-bottom: 20px solid black;
+  font-size: 32px;
+  text-align: center;
+}
+
+#end {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.bullet-header {
+color: darkblue;
+}
+
+.table {
+  border: 3px solid orange;
+  background: blue;
+}
+
+.row {
+  border:1px solid blue;
+  background: white;
+}
+
+.head {
+  border:2px solid blue;
+  background: white;
+}
+
+h2 {
+  color: 65600;
+  font-style: italic;
+  font-weight: 500;
+}
+
+p {
+  color: black;
+  font-style: normal;
+}
+
+body{
+  background-color: lightgreen;
+  margin: -10px;
+  padding: 20px;
+  border: 10px solid orange;
+  border-style: ridge;
+}
+
+a:hover[href="https://www.ucvts.tec.nj.us/" ] {
+  color:red;
+  border: 1px solid red;
+}
+
+a:hover[href="https://www.ucvts.tec.nj.us/Page/471" ] {
+  color:red;
+  border: 1px solid red;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color:orange;
+  border: 1px solid orange;
+}
+
+div a.bold{
+font-weight: bold;
+}
+
+h3 + ul {
+  margin: 1px;
+  padding: 7px;
+  border: 2px solid black;
+  border-radius: 15px;
+  border-width: thick;
+}
+
+#final {
+   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

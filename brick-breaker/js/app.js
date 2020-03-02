@@ -105,16 +105,18 @@ function collisionDetection() {
 }
 
 function drawBall() {
+  var color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
   ctx.beginPath();
   ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = color;
   ctx.fill();
   ctx.closePath();
 }
 function drawPaddle() {
+  var color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
   ctx.beginPath();
   ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = color;
   ctx.fill();
   ctx.closePath();
 }
@@ -139,13 +141,15 @@ function drawBricks() {
   setTimeout(drawBricks, 100000);
 }
 function drawScore() {
+  var color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
   ctx.font = "16px Arial";
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = color;
   ctx.fillText("Score: "+score, 8, 20);
 }
 function drawLives() {
+  var color = '#' + Math.random().toString(16).slice(2, 8).toUpperCase();
   ctx.font = "16px Arial";
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = color;
   ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
 
@@ -191,8 +195,8 @@ function draw() {
     paddleX -= 7;
   }
 
-  x += level*dx +1;
-  y += level*dy +1;
+  x += level*dx;
+  y += level*dy;
   requestAnimationFrame(draw);
 }
 draw();
