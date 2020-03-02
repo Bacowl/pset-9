@@ -59,41 +59,6 @@ window.onload= function() {
     render();
 }
 
-  function render() {
-    board.forEach(function(mark, index) {
-      squares[index].textContent = mark;
-    });
-    for (var i = 0; i < board.length; i++) {
-      squares[i].style.color = "black"
-    }
-    for (var i = 0; i < board.length; i++) {
-      if (squares[i].textContent == "♔") {
-        squares[i].style.fontSize = "50px"
-      } else {
-        squares[i].style.fontSize = "100px"
-      }
-    }
-    for (var i = 0; i < redCheckers.length ; i++) {
-      squares[redCheckers[i].id-1].style.color = "red"
-    }
-    if (squares[0].style.color == "red" && board[0] == "\u2022") {
-      board[0] = "♔"
-    } else if (squares[2].style.color == "red" && board[2] == "\u2022") {
-      board[2] = "♔"
-    } else if (squares[4].style.color == "red" && board[4] == "\u2022") {
-      board[4] = "♔"
-    } else if (squares[6].style.color == "red" && board[6] == "\u2022") {
-      board[6] = "♔"
-    } else if (squares[63].style.color == "black" && board[63] == "\u2022") {
-      board[63] = "♔"
-    } else if (squares[61].style.color == "black" && board[61] == "\u2022") {
-      board[61] = "♔"
-    } else if (squares[59].style.color == "black" && board[59] == "\u2022") {
-      board[59] = "♔"
-    } else if (squares[57].style.color == "black" && board[57] == "\u2022") {
-      board[57] = "♔"
-    }
-  }
   function takeTurn(e) {
     turn = document.getElementById("message").textContent.substring(6,document.getElementById("message").textContent.length)
       let index = squares.findIndex(function(square) {
@@ -139,15 +104,6 @@ window.onload= function() {
                   redCheckers.splice(i,1,document.getElementById(index + 1))
                 }
               }
-              if (turn.toLowerCase() == "red" && board[index] == "•" && step == 1) {
-                document.getElementById("message").textContent = "Turn: Black"
-                step = 0;
-                render()
-              } else if (turn.toLowerCase() == "black" && step == 1) {
-                document.getElementById("message").textContent = "Turn: Red"
-                step = 0;
-                render()
-              }
             } else if (turn.toLowerCase() == "black" && ((index + 9 == indexReference || index + 7 == indexReference) || (index - 9 == indexReference || index - 7 == indexReference))&& (index - index%8 +8 == indexReference - indexReference%8 || index - index%8 -8 == indexReference - indexReference%8)&& board[index] == "" && board[indexReference] == "♔") {
               board[indexReference] = ""
               board[index] = "♔"
@@ -159,15 +115,6 @@ window.onload= function() {
                 if (redCheckers[i] == document.getElementById(indexReference + 1)) {
                   redCheckers.splice(i,1,document.getElementById(index + 1))
                 }
-              }
-              if (turn.toLowerCase() == "red" && board[index] == "•" && step == 1) {
-                document.getElementById("message").textContent = "Turn: Black"
-                step = 0;
-                render()
-              } else if (turn.toLowerCase() == "black" && step == 1) {
-                document.getElementById("message").textContent = "Turn: Red"
-                step = 0;
-                render()
               }
             } else if (turn.toLowerCase() == "black" && (index + 18 == indexReference || index + 14 == indexReference || index - 14 == indexReference || index - 18 == indexReference) && (index - index%8 +16 == indexReference - indexReference%8 || index - index%8 -16 == indexReference - indexReference%8)&& board[index] == "" && board[indexReference] == "♔" && ((board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔"))&& squares[(indexReference + index)/2].style.color == "red") {
               board[indexReference] = ""
@@ -190,15 +137,50 @@ window.onload= function() {
           } else if (step == -1) {
             step = 0
           }
-          if (turn.toLowerCase() == "red" && board[index] == "•" && step == 2) {
+          if (turn.toLowerCase() == "red" && (board[index] == "•" || board[index] == "♔") && step == 2) {
             document.getElementById("message").textContent = "Turn: Black"
             step = 0;
             render()
-          } else if (turn.toLowerCase() == "black" && step == 2) {
+          } else if (turn.toLowerCase() == "black" && (board[index] == "•" || board[index] == "♔") && step == 2) {
             document.getElementById("message").textContent = "Turn: Red"
             step = 0;
             render()
           }
         }
 
+    }
+    function render() {
+      board.forEach(function(mark, index) {
+        squares[index].textContent = mark;
+      });
+      for (var i = 0; i < board.length; i++) {
+        squares[i].style.color = "black"
+      }
+      for (var i = 0; i < board.length; i++) {
+        if (squares[i].textContent == "♔") {
+          squares[i].style.fontSize = "50px"
+        } else {
+          squares[i].style.fontSize = "100px"
+        }
+      }
+      for (var i = 0; i < redCheckers.length ; i++) {
+        squares[redCheckers[i].id-1].style.color = "red"
+      }
+      if (squares[0].style.color == "red" && board[0] == "\u2022") {
+        board[0] = "♔"
+      } else if (squares[2].style.color == "red" && board[2] == "\u2022") {
+        board[2] = "♔"
+      } else if (squares[4].style.color == "red" && board[4] == "\u2022") {
+        board[4] = "♔"
+      } else if (squares[6].style.color == "red" && board[6] == "\u2022") {
+        board[6] = "♔"
+      } else if (squares[63].style.color == "black" && board[63] == "\u2022") {
+        board[63] = "♔"
+      } else if (squares[61].style.color == "black" && board[61] == "\u2022") {
+        board[61] = "♔"
+      } else if (squares[59].style.color == "black" && board[59] == "\u2022") {
+        board[59] = "♔"
+      } else if (squares[57].style.color == "black" && board[57] == "\u2022") {
+        board[57] = "♔"
+      }
     }
