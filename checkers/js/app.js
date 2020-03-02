@@ -94,16 +94,16 @@ window.onload= function() {
             } else if (turn.toLowerCase() == "black" && (index - 9 == indexReference || index - 7 == indexReference) && index - index%8 - 8 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•") {
               board[indexReference] = ""
               board[index] = "•"
-            } else if (turn.toLowerCase() == "red" && (index + 18 == indexReference || index + 14 == indexReference) && index - index%8 +16 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•" && board[(indexReference + index)/2] == "•" && squares[(indexReference + index)/2].style.color == "black") {
+            } else if (turn.toLowerCase() == "red" && (index + 18 == indexReference || index + 14 == indexReference) && index - index%8 +16 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•" && (board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔") && squares[(indexReference + index)/2].style.color == "black") {
               board[indexReference] = ""
               board[(indexReference + index)/2] = ""
               board[index] = "•"
               for (var i = 0; i < redCheckers.length; i++) {
-                if (redCheckers[i] == document.getElementById(indexReference + 1)) {
-                  redCheckers.splice(i,1,document.getElementById(index + 1))
+                if (redCheckers[i] == document.getElementById((index + index)/2)) {
+                  redCheckers.splice(i,1,document.getElementById((index + index)/2))
                 }
               }
-            } else if (turn.toLowerCase() == "black" && (index - 18 == indexReference || index - 14 == indexReference) && index - index%8 -16 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•" && board[(indexReference + index)/2] == "•" && squares[(indexReference + index)/2].style.color == "red") {
+            } else if (turn.toLowerCase() == "black" && (index - 18 == indexReference || index - 14 == indexReference) && index - index%8 -16 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "•" && (board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔") && squares[(indexReference + index)/2].style.color == "red") {
               board[indexReference] = ""
               board[(indexReference + index)/2] = ""
               board[index] = "•"
@@ -123,10 +123,24 @@ window.onload= function() {
             } else if (turn.toLowerCase() == "black" && ((index + 9 == indexReference || index + 7 == indexReference) || (index - 9 == indexReference || index - 7 == indexReference))&& (index - index%8 +8 == indexReference - indexReference%8 || index - index%8 -8 == indexReference - indexReference%8)&& board[index] == "" && board[indexReference] == "♔") {
               board[indexReference] = ""
               board[index] = "♔"
-            } else if (turn.toLowerCase() == "red" && (index + 18 == indexReference || index + 14 == indexReference) && index - index%8 +16 == indexReference - indexReference%8 && board[index] == "" && board[indexReference] == "♔" && (board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔" && squares[(indexReference + index)/2].style.color == "black") {
-
-            } else if (true) {
-
+            } else if (turn.toLowerCase() == "red" && (index + 18 == indexReference || index + 14 == indexReference || index - 14 == indexReference || index - 18 == indexReference) && (index - index%8 +16 == indexReference - indexReference%8 || index - index%8 -16 == indexReference - indexReference%8)&& board[index] == "" && board[indexReference] == "♔" && ((board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔"))&& squares[(indexReference + index)/2].style.color == "black") {
+              board[indexReference] = ""
+              board[(indexReference + index)/2] = ""
+              board[index] = "♔"
+              for (var i = 0; i < redCheckers.length; i++) {
+                if (redCheckers[i] == document.getElementById(indexReference + 1)) {
+                  redCheckers.splice(i,1,document.getElementById(index + 1))
+                }
+              }
+            } else if (turn.toLowerCase() == "black" && (index + 18 == indexReference || index + 14 == indexReference || index - 14 == indexReference || index - 18 == indexReference) && (index - index%8 +16 == indexReference - indexReference%8 || index - index%8 -16 == indexReference - indexReference%8)&& board[index] == "" && board[indexReference] == "♔" && ((board[(indexReference + index)/2] == "•" || board[(indexReference + index)/2] == "♔"))&& squares[(indexReference + index)/2].style.color == "red") {
+              board[indexReference] = ""
+              board[(indexReference + index)/2] = ""
+              board[index] = "♔"
+              for (var i = 0; i < redCheckers.length; i++) {
+                if (redCheckers[i] == document.getElementById((indexReference + index)/2)) {
+                  redCheckers.splice(i,1)
+                }
+              }
             } else {
               step = -1
             }
